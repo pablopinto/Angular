@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+
+        <!-- Icono del navbar -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/A-64.png" alt="Bootstrap" width="30" height="24">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Navegacion el icono -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Cuerpo de la barra de navegacion -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" aria-current="page" [routerLink]="['home']">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['heroes']">Heroes</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['about']">About</a>
+                </li>
+
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="text" placeholder="Buscar héroe" aria-label="Buscar" (keyup.enter)="buscarHeroe(buscarTexto.value)" #buscarTexto>
+                <button (click)="buscarHeroe(buscarTexto.value)" class="btn btn-outline-primary" type="button">Buscar</button>
+            </form>
+        </div>
+    </div>
+</nav>
