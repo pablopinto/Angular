@@ -1,1 +1,59 @@
-<p>artista works!</p>
+<app-loading *ngIf="loadingArtist" class="m-5"></app-loading>
+
+<div class="row animated fadeIn" *ngIf="!loadingArtist">
+    <div class="col-2">
+        <img class="img" [src]="artista.images | noimage" class="img-thumbnail img-circle" />
+    </div>
+
+    <div class="col">
+        <h3>{{ artista.name }}</h3>
+        <p>
+            <a [href]="artista.external_urls" target="_blank">
+        Ir a la web del artista
+      </a>
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+        <button routerLink="/search" class="btn btn-outline-danger">Volver</button>
+    </div>
+
+</div>
+
+<div class="row m-5">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Cancion</th>
+                        <th scope="col">Vista Previa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <td>
+                            <img [src]="track.album.images | noimage" class="img-thumb">
+                        </td>
+                        <td>{{ track.album.name }}</td>
+                        <td>{{ track.name }}</td>
+                        <td>
+                            <!-- <audio [src]="track.preview_url" controls>
+                                </audio> -->
+
+                            <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4VP8QiCeaZq8BeTIUrMQOG?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe> -->
+
+                            <iframe style="border-radius:12px" [src]=" track.id  | domseguro:'https://open.spotify.com/embed/track/'" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
